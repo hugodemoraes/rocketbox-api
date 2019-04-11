@@ -7,6 +7,9 @@ const routes = express.Router();
 const BoxController = require("./controllers/BoxController");
 const FileController = require("./controllers/FileController");
 
+routes.get("/", (req, res) => {
+  res.send("Hello Rocketbox API");
+});
 routes.get("/boxes/:id", BoxController.show);
 routes.post("/boxes", BoxController.store);
 routes.post(
