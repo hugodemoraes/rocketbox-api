@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -18,9 +18,12 @@ io.on("connection", socket => {
   });
 });
 
-mongoose.connect(process.env.MONGODB_URL, {
-  useNewUrlParser: true
-});
+mongoose.connect(
+  "mongodb://rocketbox:rocketbox2019@ds137596.mlab.com:37596/rocketbox",
+  {
+    useNewUrlParser: true
+  }
+);
 
 app.use((req, res, next) => {
   req.io = io;
@@ -34,4 +37,4 @@ app.use("/files", express.static(path.resolve(__dirname, "..", "tmp")));
 
 app.use(require("./routes"));
 
-server.listen(process.env.PORT);
+server.listen(process.env.PORT || 3333);
