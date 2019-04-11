@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -18,12 +18,9 @@ io.on("connection", socket => {
   });
 });
 
-mongoose.connect(
-  "mongodb://rocketbox:rocketbox2019@ds137596.mlab.com:37596/rocketbox",
-  {
-    useNewUrlParser: true
-  }
-);
+mongoose.connect(process.env.MONGODB_URL, {
+  useNewUrlParser: true
+});
 
 app.use((req, res, next) => {
   req.io = io;
