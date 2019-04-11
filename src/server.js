@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -15,8 +17,6 @@ io.on("connection", socket => {
     socket.join(box);
   });
 });
-
-console.log(process.env.MONGODB_URL);
 
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true
