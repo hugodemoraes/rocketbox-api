@@ -11,6 +11,7 @@ routes.get("/", (req, res) => {
   res.send("Hello Rocketbox API");
 });
 routes.get("/boxes/:id", BoxController.show);
+routes.get("/boxes", BoxController.showAll);
 routes.post("/boxes", BoxController.store);
 routes.post(
   "/boxes/:id/files",

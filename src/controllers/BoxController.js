@@ -9,6 +9,12 @@ class BoxController {
     return res.json(box);
   }
 
+  async showAll(req, res) {
+    const box = await Box.find();
+
+    res.json(box);
+  }
+
   async show(req, res) {
     const {
       params: { id }
